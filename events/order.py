@@ -7,7 +7,7 @@ def _conv_iid(iid):
     return iid.rstrip(b'\0')
 
 
-@attrs(slots=True, cmp=False)
+@attrs(slots=True)
 class OrderEntryRequest(SerializableStruct):
     account_id = attrib()
     strategy_id = attrib()
@@ -21,7 +21,7 @@ class OrderEntryRequest(SerializableStruct):
     fmt = '<HHI16sHIdQ'
 
 
-@attrs(slots=True, cmp=False)
+@attrs(slots=True)
 class OrderCancelRequest(SerializableStruct):
     account_id = attrib()
     strategy_id = attrib()
@@ -31,7 +31,7 @@ class OrderCancelRequest(SerializableStruct):
     fmt = '<HHIQ'
 
 
-@attrs(slots=True, cmp=False)
+@attrs(slots=True)
 class OrderUpdate(SerializableStruct):
     account_id = attrib()
     strategy_id = attrib()
