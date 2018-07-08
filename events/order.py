@@ -2,6 +2,12 @@ from attr import attrs, attrib
 
 from .base import SerializableStruct
 
+__all__ = [
+    'OrderEntryRequest',
+    'OrderCancelRequest',
+    'OrderUpdate'
+]
+
 
 def _conv_iid(iid):
     return iid.rstrip(b'\0')
@@ -9,6 +15,9 @@ def _conv_iid(iid):
 
 @attrs(slots=True)
 class OrderEntryRequest(SerializableStruct):
+    eid = 16
+    fmt = '<HHI16sHIdQ'
+
     account_id = attrib()
     strategy_id = attrib()
     oid = attrib()
@@ -18,21 +27,23 @@ class OrderEntryRequest(SerializableStruct):
     price = attrib()
     time = attrib()
 
-    fmt = '<HHI16sHIdQ'
-
 
 @attrs(slots=True)
 class OrderCancelRequest(SerializableStruct):
+    eid = 17
+    fmt = '<HHIQ'
+
     account_id = attrib()
     strategy_id = attrib()
     oid = attrib()
     time = attrib()
 
-    fmt = '<HHIQ'
-
 
 @attrs(slots=True)
 class OrderUpdate(SerializableStruct):
+    eid = 18
+    fmt = '<HHI16sHIdQHIIId'
+
     account_id = attrib()
     strategy_id = attrib()
     oid = attrib()
@@ -46,7 +57,3 @@ class OrderUpdate(SerializableStruct):
     remaining = attrib()
     canceled = attrib()
     fill_price = attrib()
-
-    fmt = '<HHI16sHIdQHIIId'
-
-
