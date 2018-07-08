@@ -36,7 +36,7 @@ class OrderUpdate(SerializableStruct):
     account_id = attrib()
     strategy_id = attrib()
     oid = attrib()
-    iid = attrib()
+    iid = attrib(converter=_conv_iid)
     action = attrib()
     quantity = attrib()
     price = attrib()
