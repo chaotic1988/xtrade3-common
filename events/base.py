@@ -8,7 +8,7 @@ class SerializableStruct:
         return cls(*struct.unpack(cls.fmt, data))
 
     def dump(self):
-        return struct.pack(
+        return struct.pack('I', self.eid) + struct.pack(
             self.fmt,
             *[getattr(self, attr) for attr in self.__slots__]
         )
