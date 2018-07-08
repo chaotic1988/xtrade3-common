@@ -16,35 +16,30 @@ class OrderEntryRequest(SerializableStruct):
     action = attrib()
     quantity = attrib()
     price = attrib()
+    time = attrib()
 
-    fmt = '<HHI16sHId'
-
-
-@attrs(slots=True, cmp=False)
-class OrderCancelRequest:
-    account_id = attrib()
-    strategy_id = attrib()
-    oid = attrib()
-
-    fmt = '<HHI'
+    fmt = '<HHI16sHIdQ'
 
 
 @attrs(slots=True, cmp=False)
-class OrderReceipt:
+class OrderCancelRequest(SerializableStruct):
     account_id = attrib()
     strategy_id = attrib()
     oid = attrib()
-    iid = attrib(converter=_conv_iid)
+    time = attrib()
+
+    fmt = '<HHIQ'
+
+
+@attrs(slots=True, cmp=False)
+class OrderUpdate(SerializableStruct):
+    account_id = attrib()
+    strategy_id = attrib()
+    oid = attrib()
+    iid = attrib()
     action = attrib()
     quantity = attrib()
     price = attrib()
-
-
-@attrs(slots=True, cmp=False)
-class OrderUpdate:
-    account_id = attrib()
-    strategy_id = attrib()
-    oid = attrib()
     time = attrib()
     type = attrib()
     filled = attrib()
@@ -52,6 +47,6 @@ class OrderUpdate:
     canceled = attrib()
     fill_price = attrib()
 
-    fmt = '<HHIQIIIId'
+    fmt = '<HHI16sHIdQHIIId'
 
 

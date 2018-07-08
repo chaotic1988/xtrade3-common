@@ -20,6 +20,8 @@ class OrderStatus(IntEnum):
 
 
 class OrderUpdateType(IntEnum):
-    FILL = 0
-    CANCEL = 1
-    REJECT = 2
+    ACCEPT = 0
+    REJECT = 1
+    FILL = 2
+    CANCEL = 3
+
