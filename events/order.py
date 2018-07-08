@@ -10,7 +10,10 @@ __all__ = [
 
 
 def _conv_iid(iid):
-    return iid.rstrip(b'\0')
+    if isinstance(iid, bytes):
+        return iid.rstrip(b'\0')
+    elif isinstance(iid, str):
+        return iid.encode()
 
 
 @attrs(slots=True)
